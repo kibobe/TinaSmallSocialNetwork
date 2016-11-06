@@ -3,9 +3,12 @@
 import MySQLdb
 import json
 
-
-db1 = MySQLdb.connect(host="localhost",user="root",passwd="pucam500")
-cursor = db1.cursor()
+try:
+    db1 = MySQLdb.connect(host="localhost",user="root",passwd="pucam500")
+    cursor = db1.cursor()
+except:
+    print "Bad connect"
+    exit()
 
 try:
     sql = 'CREATE DATABASE IF NOT EXISTS socialNetwork'
@@ -21,7 +24,6 @@ except:
     print "Bad connection"
     exit()
   
-
 #create two tables, people and friends  
 try:  
     sql = ('CREATE TABLE IF NOT EXISTS people('
